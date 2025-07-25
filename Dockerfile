@@ -18,4 +18,5 @@ RUN apk add --no-cache ca-certificates
 WORKDIR /root/
 COPY --from=builder /fakeAPI/app .
 
+EXPOSE 3000
 CMD [ "./app" ]
