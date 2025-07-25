@@ -1,0 +1,5 @@
+# Live Reload
+tmp/
+.air.toml
+logs/
+*.log

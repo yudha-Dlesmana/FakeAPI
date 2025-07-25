@@ -1,0 +1,74 @@
+basePath: /api
+definitions:
+  types.DefaultResponse:
+    properties:
+      info:
+        type: string
+      message:
+        type: string
+      status:
+        type: string
+      version:
+        type: string
+    type: object
+  types.Response:
+    properties:
+      data:
+        description: Data Payload
+      message:
+        description: Descriptive message
+        type: string
+      status:
+        description: Status code (e.g. 200 or 400)
+        type: integer
+    type: object
+host: localhost:3000
+info:
+  contact: {}
+  description: This is a fake REST API for prototyping, frontend development, or testing
+    purposes only
+  title: Fake API
+  version: "1.0"
+paths:
+  /v1:
+    get:
+      description: Basic information about the FakeAPI service, including status,
+        version
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.DefaultResponse'
+      summary: Welcome to FakeAPI
+      tags:
+      - Welcome
+  /v1/fakeAPI:
+    get:
+      consumes:
+      - application/json
+      description: Generate fake data base on the provided type and count parameters.
+      parameters:
+      - description: Faker type mapping (e.g. {\'user\':\'username\', ...})
+        in: header
+        name: type
+        required: true
+        type: string
+      - description: Number of fake data to generate (default 1)
+        in: query
+        name: count
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.Response'
+      summary: Generate Fake API Data
+      tags:
+      - FakeAPI
+swagger: "2.0"

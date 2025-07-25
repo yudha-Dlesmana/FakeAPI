@@ -1,0 +1,101 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a fake REST API for prototyping, frontend development, or testing purposes only",
+    "title": "Fake API",
+    "contact": {},
+    "version": "1.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "paths": {
+    "/v1": {
+      "get": {
+        "description": "Basic information about the FakeAPI service, including status, version",
+        "tags": ["Welcome"],
+        "summary": "Welcome to FakeAPI",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/types.DefaultResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/fakeAPI": {
+      "get": {
+        "description": "Generate fake data base on the provided type and count parameters.",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["FakeAPI"],
+        "summary": "Generate Fake API Data",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Faker type mapping (e.g. {\\'user\\':\\'username\\', ...})",
+            "name": "type",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "Number of fake data to generate (default 1)",
+            "name": "count",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/types.Response"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/types.Response"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "types.DefaultResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "info": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "types.Response": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "description": "Data Payload"
+        },
+        "message": {
+          "description": "Descriptive message",
+          "type": "string"
+        },
+        "status": {
+          "description": "Status code (e.g. 200 or 400)",
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

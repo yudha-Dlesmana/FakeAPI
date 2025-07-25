@@ -1,0 +1,11 @@
+# Ignore Air (hot reload tool)
+.air.toml
+
+# Ignore temporary files and folders
+tmp/
+*.log
+
+# Git & VCS
+.git
+.gitignore
+
