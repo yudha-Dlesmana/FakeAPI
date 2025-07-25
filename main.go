@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	_ "github.com/yudha-Dlesmana/fakeAPI/docs"
 	"github.com/yudha-Dlesmana/fakeAPI/routers"
 
@@ -22,5 +24,5 @@ func main() {
 
 	routers.SetupRoutes(app)
 
-	app.Listen(":3000")
+	log.Fatal(app.Listen(":3000"))
 }
