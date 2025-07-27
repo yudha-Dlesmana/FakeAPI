@@ -2,7 +2,9 @@ package main
 
 import (
 	"log"
+	"os"
 
+	"github.com/joho/godotenv"
 	_ "github.com/yudha-Dlesmana/fakeAPI/docs"
 	"github.com/yudha-Dlesmana/fakeAPI/routers"
 
@@ -24,5 +26,12 @@ func main() {
 
 	routers.SetupRoutes(app)
 
-	log.Fatal(app.Listen(":3000"))
+	_ = godotenv.Load()
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("PORT environment variable is required but not set")
+	}
+
+	log.Fatal(app.Listen(":" + port))
 }

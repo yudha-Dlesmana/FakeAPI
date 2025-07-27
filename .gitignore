@@ -1,5 +1,7 @@
 # Live Reload
 tmp/
+.env
 .air.toml
 logs/
 *.log
+
