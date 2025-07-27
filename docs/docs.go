@@ -15,7 +15,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/v1": {
+        "/": {
             "get": {
                 "description": "Basic information about the FakeAPI service, including status, version",
                 "tags": [

@@ -16,6 +16,7 @@ FROM alpine:3.21
 RUN apk add --no-cache ca-certificates
 
 WORKDIR /root/
+ENV PORT=3000
 COPY --from=builder /fakeAPI/app .
 
 EXPOSE 3000
