@@ -22,53 +22,55 @@ definitions:
         description: Status code (e.g. 200 or 400)
         type: integer
     type: object
-host: localhost:3000
+host: apifaker.up.railway.app
 info:
   contact: {}
-  description: This is a fake REST API for prototyping, frontend development, or testing
+  description:
+    This is a fake REST API for prototyping, frontend development, or testing
     purposes only
   title: Fake API
   version: "1.0"
 paths:
   /v1:
     get:
-      description: Basic information about the FakeAPI service, including status,
+      description:
+        Basic information about the FakeAPI service, including status,
         version
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/types.DefaultResponse'
+            $ref: "#/definitions/types.DefaultResponse"
       summary: Welcome to FakeAPI
       tags:
-      - Welcome
+        - Welcome
   /v1/fakeAPI:
     get:
       consumes:
-      - application/json
+        - application/json
       description: Generate fake data base on the provided type and count parameters.
       parameters:
-      - description: Faker type mapping (e.g. {\'user\':\'username\', ...})
-        in: header
-        name: type
-        required: true
-        type: string
-      - description: Number of fake data to generate (default 1)
-        in: query
-        name: count
-        type: integer
+        - description: Faker type mapping (e.g. {\'user\':\'username\', ...})
+          in: header
+          name: type
+          required: true
+          type: string
+        - description: Number of fake data to generate (default 1)
+          in: query
+          name: count
+          type: integer
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/types.Response'
+            $ref: "#/definitions/types.Response"
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/types.Response'
+            $ref: "#/definitions/types.Response"
       summary: Generate Fake API Data
       tags:
-      - FakeAPI
+        - FakeAPI
 swagger: "2.0"

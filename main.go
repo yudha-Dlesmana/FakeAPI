@@ -11,17 +11,22 @@ import (
 	swagger "github.com/swaggo/fiber-swagger"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
-// @title 			Fake API
-// @version 		1.0
-// @description This is a fake REST API for prototyping, frontend development, or testing purposes only
-// @host 				localhost:3000
-// @basePath		/api
 func main() {
 	app := fiber.New()
 
-	// Swagger route
+	app.Use(func(c *fiber.Ctx) error {
+		println("🔥 Request masuk ke path:", c.Path())
+		return c.Next()
+	})
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*",
+		AllowMethods: "GET,OPTIONS",
+	}))
+
 	app.Get("/swagger/*", swagger.WrapHandler)
 
 	routers.SetupRoutes(app)
